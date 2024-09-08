@@ -1,0 +1,6 @@
+application:
+  problemSettings:
+    numberOfProblems: 5
+    numberRangeStart: 10
+    numberRangeEnd: 15
+    
