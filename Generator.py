@@ -27,3 +27,5 @@ led1 = Pin(28, Pin.OUT)
 led2 = Pin(22, Pin.OUT)
 led1.low()
 led2.low()
+
+print("------------Welcome to the math problem generator------------")
