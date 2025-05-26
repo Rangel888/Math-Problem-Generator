@@ -27,6 +27,28 @@ def toggle_green_light():
     led2.toggle()
     utime.sleep(2)
     led2.toggle()
+    
+def select_operation():
+    print("\nWhat would you like to work on?\n")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+
+    user_input = input("Enter an option (1-4) from above: ").strip()
+    print()
+
+    if user_input == "1":
+        return "addition"
+    elif user_input == "2":
+        return "subtraction"
+    elif user_input == "3":
+        return "multiplication"
+    elif user_input == "4":
+        return "division"
+    else:
+        print("Invalid choice. Defaulting to 'addition'.")
+        return "addition"
 
 def main():
 
