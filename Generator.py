@@ -10,7 +10,22 @@ problem_answers = []
 with open('application.json', 'r') as f:
     config = ujson.load(f)
 
+def select_mode():
+    print("\nSelect a mode:\n")
+    print("1. Free Play (focus on one subject)")
+    print("2. Random Mode (mix of all subjects +, -, *, /)")
 
+    choice = input("Enter 1 or 2: ").strip()
+    print()
+    
+    if choice == "1":
+        return "free"
+    elif choice == "2":
+        return "random"
+    else:
+        print("Invalid choice. Defaulting to Free Play.")
+        return "free"
+    
 def select_operation():
     print("\nWhat would you like to work on?\n")
     print("1. Addition")
