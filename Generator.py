@@ -67,10 +67,21 @@ def load_problems(problem_list, problem_answers, operation, number_of_problems):
             problem = f"{num1} * {num2} = "
             answer = num1 * num2
         else:
-            while num1 % num2 != 0:
-                num2 = r.randint(1, 10)
+            if use_division_remainders:
+                # Find all divisors of num1
+                divisors = [i for i in range(1, num1 + 1)]
+            else: 
+                # Find all divisors of num1 with no remainder
+                divisors = [i for i in range(1, num1 + 1) if num1 % i == 0]
+
+            # Choose random divisor from list
+            num2 = divisors[r.randint(0, len(divisors) - 1)]
             problem = f"{num1} / {num2} = "
-            answer = num1 / num2
+            
+            if num1 % num2 != 0:
+                answer = f"{num1 // num2} r{num1 % num2}"
+            else: 
+                answer = num1 // num2
         
         problem_list.append(problem)
         problem_answers.append(answer)
