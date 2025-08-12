@@ -49,6 +49,8 @@ def select_operation():
         return "addition"
 
 def load_problems(problem_list, problem_answers, operation, number_of_problems):
+
+    operations = ['addition', 'subtraction', 'multiplication', 'division']
     for _ in range(number_of_problems):
         temp1 = r.randint(1,20)
         temp2 = r.randint(1,20)
