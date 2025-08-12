@@ -90,5 +90,13 @@ def main():
 
     print("------------Welcome to the Math Problem Generator----------")
 
+    mode = select_mode()
+
+    operation = None
+    if mode == "free":
+        operation = select_operation()
+
+    load_problems(problem_list, problem_answers, operation, number_of_problems, mode)
+
 
 main()
