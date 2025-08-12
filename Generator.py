@@ -1,6 +1,7 @@
 import random as r
 import ujson
 from hardware import toggle_red_light, toggle_green_light
+from input_utils import normalize_remainder_input
 
 problem_list = []
 problem_answers = []
