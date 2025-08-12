@@ -99,4 +99,36 @@ def main():
     load_problems(problem_list, problem_answers, operation, number_of_problems, mode)
 
 
+    for i, problem in enumerate(problem_list):     
+
+        user_answer = None
+            
+        # keep trying on same problem until right answer given
+        while (user_answer != problem_answers[i]):
+            raw_input = input(problem)
+
+            if " / " in problem and "r" in raw_input.lower():
+                user_answer = normalize_remainder_input(raw_input)
+            else:
+                try:
+                    user_answer = int(raw_input)
+                except ValueError:
+                    print("Invalid input! Please enter a number")
+                    continue
+
+
+            #except ValueError:
+                #print("Invalid input! Please enter a number")
+               # continue
+
+            if user_answer != problem_answers[i]:
+                toggle_red_light()
+                print("Wrong, Try again!")
+
+        # Answer was correct 
+        toggle_green_light()
+        print("Correct!!!!!\n")
+    print("Exiting game")
+
+
 main()
