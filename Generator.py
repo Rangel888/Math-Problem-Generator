@@ -85,9 +85,8 @@ def load_problems(problem_list, problem_answers, operation, mode):
         
         problem_list.append(problem)
         problem_answers.append(answer)
-        
-def main():
 
+def play_game():
     print("------------Welcome to the Math Problem Generator----------")
 
     mode = select_mode()
@@ -123,6 +122,17 @@ def main():
         # Answer was correct 
         toggle_green_light()
         print("Correct!!!!!\n")
+
+        
+def main():
+
+    while True:
+        play_game()
+        play_again = input("Play again? (y/n): ").strip().lower()
+        if play_again != 'y':
+            print("Thanks for playing!")
+            break
+        
     print("Exiting game")
 
 
