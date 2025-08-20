@@ -99,9 +99,6 @@ def play_game():
 
     load_problems(problem_list, problem_answers, operation, mode)
 
-    print(problem_list)
-
-
     for i, problem in enumerate(problem_list):     
 
         user_answer = None
