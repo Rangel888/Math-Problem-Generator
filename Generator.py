@@ -46,7 +46,7 @@ def select_operation():
         print("Invalid choice. Defaulting to 'addition'.")
         return "addition"
 
-def load_problems(problem_list, problem_answers, operation):
+def load_problems(problem_list, problem_answers, operation, mode):
 
     operations = ['addition', 'subtraction', 'multiplication', 'division']
     for _ in range(config.number_of_problems):
@@ -54,6 +54,8 @@ def load_problems(problem_list, problem_answers, operation):
         temp2 = r.randint(1,20)
         num1 = max(temp1, temp2)
         num2 = min(temp1, temp2)
+
+        operation = operation if mode == "free" else operations[r.randint(0, len(operations) - 1)]
 
         if operation == "addition":
             problem = f"{num1} + {num2} = "
@@ -94,7 +96,7 @@ def main():
     if mode == "free":
         operation = select_operation()
 
-    load_problems(problem_list, problem_answers, operation)
+    load_problems(problem_list, problem_answers, operation, mode)
 
 
     for i, problem in enumerate(problem_list):     
