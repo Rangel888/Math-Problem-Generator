@@ -89,6 +89,8 @@ def load_problems(problem_list, problem_answers, operation, mode):
 def play_game():
     print("------------Welcome to the Math Problem Generator----------")
 
+    problem_list.clear()
+    problem_answers.clear()
     mode = select_mode()
 
     operation = None
@@ -96,6 +98,8 @@ def play_game():
         operation = select_operation()
 
     load_problems(problem_list, problem_answers, operation, mode)
+
+    print(problem_list)
 
 
     for i, problem in enumerate(problem_list):     
