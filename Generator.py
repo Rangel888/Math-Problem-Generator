@@ -1,14 +1,12 @@
 import random as r
-import ujson
 from hardware import toggle_red_light, toggle_green_light
 from input_utils import normalize_remainder_input
+from configs import Config
 
 problem_list = []
 problem_answers = []
 
-# Load configs from JSON
-with open('application.json', 'r') as f:
-    config = ujson.load(f)
+config = Config('user_settings.json')
 
 def select_mode():
     print("\nSelect a mode:\n")
@@ -48,10 +46,10 @@ def select_operation():
         print("Invalid choice. Defaulting to 'addition'.")
         return "addition"
 
-def load_problems(problem_list, problem_answers, operation, number_of_problems):
+def load_problems(problem_list, problem_answers, operation):
 
     operations = ['addition', 'subtraction', 'multiplication', 'division']
-    for _ in range(number_of_problems):
+    for _ in range(config.number_of_problems):
         temp1 = r.randint(1,20)
         temp2 = r.randint(1,20)
         num1 = max(temp1, temp2)
@@ -67,7 +65,7 @@ def load_problems(problem_list, problem_answers, operation, number_of_problems):
             problem = f"{num1} * {num2} = "
             answer = num1 * num2
         else:
-            if use_division_remainders:
+            if config.use_division_remainders:
                 # Find all divisors of num1
                 divisors = [i for i in range(1, num1 + 1)]
             else: 
@@ -96,7 +94,7 @@ def main():
     if mode == "free":
         operation = select_operation()
 
-    load_problems(problem_list, problem_answers, operation, number_of_problems, mode)
+    load_problems(problem_list, problem_answers, operation)
 
 
     for i, problem in enumerate(problem_list):     
@@ -115,11 +113,6 @@ def main():
                 except ValueError:
                     print("Invalid input! Please enter a number")
                     continue
-
-
-            #except ValueError:
-                #print("Invalid input! Please enter a number")
-               # continue
 
             if user_answer != problem_answers[i]:
                 toggle_red_light()
