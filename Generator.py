@@ -124,8 +124,9 @@ def play_game():
     operation = None
     if mode == "free":
         operation = select_operation()
+    difficulty = select_difficulty()
 
-    load_problems(problem_list, problem_answers, operation, mode)
+    load_problems(problem_list, problem_answers, operation, mode, difficulty)
 
     for i, problem in enumerate(problem_list):     
 
