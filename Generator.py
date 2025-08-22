@@ -122,9 +122,17 @@ def play_game():
     mode = select_mode()
 
     operation = None
-    if mode == "free":
-        operation = select_operation()
-    difficulty = select_difficulty()
+
+    if config.custom_ranges_enabled:
+        print("Using custom settings....\n")
+        mode = "free"
+        operation = config.custom_range_operation
+        difficulty = "custom"
+    else:
+        mode = select_mode()
+        if mode == "free":
+            operation = select_operation()
+        difficulty = select_difficulty()
 
     load_problems(problem_list, problem_answers, operation, mode, difficulty)
 
