@@ -20,12 +20,12 @@
             "subtraction": {},
             "multiplication": {},
             "division": {}
-        },
-        "customRanges": {
-            "enabled": true,
+        }
+    },
+    "customRanges": {
+            "enabled": false,
             "operation": "multiplication",
             "min": 1,
             "max": 10
-        }
     }
 }
