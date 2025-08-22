@@ -65,16 +65,25 @@ def select_operation():
         print("Invalid choice. Defaulting to 'addition'.")
         return "addition"
 
-def load_problems(problem_list, problem_answers, operation, mode):
+def load_problems(problem_list, problem_answers, operation, mode, difficulty):
 
     operations = ['addition', 'subtraction', 'multiplication', 'division']
     for _ in range(config.number_of_problems):
-        temp1 = r.randint(1,20)
-        temp2 = r.randint(1,20)
-        num1 = max(temp1, temp2)
-        num2 = min(temp1, temp2)
 
         operation = operation if mode == "free" else operations[r.randint(0, len(operations) - 1)]
+
+        # Determine number range
+        if (config.custom_ranges_enabled and mode == "free" and config.custom_range_operation == operation):
+            range_min = config.custom_range_min
+            range_max = config.custom_range_max
+        else:
+            range_min = config.difficulty_levels[difficulty][operation]["min"]
+            range_max = config.difficulty_levels[difficulty][operation]["max"]
+
+        temp1 = r.randint(range_min, range_max)
+        temp2 = r.randint(range_min, range_max)
+        num1 = max(temp1, temp2)
+        num2 = min(temp1, temp2)
 
         if operation == "addition":
             problem = f"{num1} + {num2} = "
