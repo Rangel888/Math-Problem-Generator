@@ -119,7 +119,6 @@ def play_game():
 
     problem_list.clear()
     problem_answers.clear()
-    mode = select_mode()
 
     operation = None
 
