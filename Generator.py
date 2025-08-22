@@ -8,6 +8,25 @@ problem_answers = []
 
 config = Config('user_settings.json')
 
+def select_difficulty():
+    print("\nChoose a difficulty level:")
+    print("1. Easy")
+    print("2. Medium")
+    print("3. Hard")
+
+    choice = input("Enter 1, 2, or 3: ").strip()
+    print()
+
+    if choice == "1":
+        return "easy"
+    elif choice == "2":
+        return "medium"
+    elif choice == "3":
+        return "hard"
+    else:
+        print("Invalid choice. Defaulting to 'easy'.")
+        return "easy"
+    
 def select_mode():
     print("\nSelect a mode:\n")
     print("1. Free Play (focus on one subject)")
